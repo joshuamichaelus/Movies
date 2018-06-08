@@ -1,0 +1,36 @@
+// Place all the styles related to the movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ul {text-align:center; margin: 0 auto;}
+
+ul img {
+    list-style-type:none;
+    margin-right:10px;
+    margin-bottom:10px;
+    float:left;
+}
+
+img {
+	width:200px;
+	height:300px;
+	border: 1px solid #cccfff;
+}
+
+ul {margin:0 auto; text-align:center;}
+
+
+@media screen and (max-width: 470px) and (min-width: 100px) {
+img {
+	width:100%;
+	height:auto;
+}    
+    }
+
+
+
+@media screen and (max-width: 720px) and (min-width: 470px) {
+img {
+	width:47%;
+	height:auto;
+}    
+    }
