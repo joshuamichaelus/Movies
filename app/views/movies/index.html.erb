@@ -3,11 +3,15 @@
 <h1>Movies</h1>
 
 I would like to watch a 
-<select >
+<select class="select-genre">
 <option>all genres</option>
+<% @genres.each do |genre| %>
+  <option><%= genre.name %></option>
+<% end %>
+
 </select>
 from 
-<select >
+<select class="select-year">
 <option>all years</option>
 <option>2010-2018</option>
 <option>2000-2009</option>
@@ -16,17 +20,23 @@ from
 <option>1970-1979</option>
 </select>
 that
-<select >
+<select class="select-director">
 <option>all directors</option>
+<% @directors.each do |director| %>
+  <option><%= director.name %></option>
+<% end %>
 </select>
 directed,
 and was filmed in
-<select >
+<select class="select-country" >
 <option>all countries</option>
+<% @countries.each do |country| %>
+  <option><%= country.name %></option>
+<% end %>
 </select>
 
 <ul>
   <% @movies.each do |movie| %>
-    <img data-year="<%= movie.release_year %>" src="<%= movie.image_url %>">
+    <img class="movie" data-movie-id="<%= movie.id %>" data-genres="<%= movie.genres.map{|genre| genre.name}.join(',') %>" data-directors="<%= movie.directors.map{|director| director.name}.join(',') %>" data-year="<%= movie.release_year %>" data-countries="<%= movie.countries.map{|country| country.name}.join(',') %>"  src="<%= movie.image_url %>">
   <% end %>
 </ul>

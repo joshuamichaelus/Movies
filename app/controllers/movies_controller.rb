@@ -5,6 +5,9 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @movies = Movie.all
+    @genres = Genre.all.order(:name)
+    @directors = Director.all.order(:name)
+    @countries = Country.all.order(:name)
   end
 
   # GET /movies/1
