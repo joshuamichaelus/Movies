@@ -29,6 +29,21 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
 
+    director_string = params[:director_string]
+    director_names = director_string.split(",")
+    directors = Director.get_directors_by_name(director_names)
+    @movie.directors = directors
+
+    genre_string = params[:genre_string]
+    genre_names = genre_string.split(",")
+    genres = Genre.get_genres_by_name(genre_names)
+    @movie.genres = genres
+
+    country_string = params[:country_string]
+    country_names = country_string.split(",")
+    countries = Country.get_countries_by_name(country_names)
+    @movie.countries = countries
+
     respond_to do |format|
       if @movie.save
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
@@ -72,6 +87,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :release_year, :image_url)
+      params.require(:movie).permit(:title, :release_year, :image_url, :director_string)
     end
 end
