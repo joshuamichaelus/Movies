@@ -1,4 +1,5 @@
 class DirectorsController < ApplicationController
+  before_action :require_login
   before_action :set_director, only: [:show, :edit, :update, :destroy]
 
   # GET /directors
